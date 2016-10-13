@@ -113,70 +113,44 @@ public class SimpleJOGL implements GLEventListener {
         gl.glTranslatef(0.0f, 0.0f, -6.0f); //przesuniêcie o 6 jednostek
         gl.glRotatef(xrot, 1.0f, 0.0f, 0.0f); //rotacja wokó³ osi X
         gl.glRotatef(yrot, 0.0f, 1.0f, 0.0f); //rotacja wokó³ osi Y
-        gl.glBegin(GL.GL_QUADS);
-//œciana przednia
-        /*
-         gl.glColor3f(1.0f, 0.0f, 0.0f);
-         gl.glVertex3f(-1.0f, -1.0f, 1.0f);
-         gl.glVertex3f(1.0f, -1.0f, 1.0f);
-         gl.glVertex3f(1.0f, 1.0f, 1.0f);
-         gl.glVertex3f(-1.0f, 1.0f, 1.0f);
-         //sciana tylnia
-         gl.glColor3f(0.0f, 1.0f, 0.0f);
-         gl.glVertex3f(-1.0f, 1.0f, -1.0f);
-         gl.glVertex3f(1.0f, 1.0f, -1.0f);
-         gl.glVertex3f(1.0f, -1.0f, -1.0f);
-         gl.glVertex3f(-1.0f, -1.0f, -1.0f);
-         //œciana lewa
-         gl.glColor3f(0.0f, 0.0f, 1.0f);
-         gl.glVertex3f(-1.0f, -1.0f, -1.0f);
-         gl.glVertex3f(-1.0f, -1.0f, 1.0f);
-         gl.glVertex3f(-1.0f, 1.0f, 1.0f);
-         gl.glVertex3f(-1.0f, 1.0f, -1.0f);
-         //œciana prawa
-         gl.glColor3f(1.0f, 1.0f, 0.0f);
-         gl.glVertex3f(1.0f, 1.0f, -1.0f);
-         gl.glVertex3f(1.0f, 1.0f, 1.0f);
-         gl.glVertex3f(1.0f, -1.0f, 1.0f);
-         gl.glVertex3f(1.0f, -1.0f, -1.0f);
-         */
-//œciana dolna
-        gl.glColor3f(1.0f, 0.0f, 1.0f);
-        gl.glVertex3f(-1.0f, -1.0f, 1.0f);
-        gl.glVertex3f(-1.0f, -1.0f, -1.0f);
-        gl.glVertex3f(1.0f, -1.0f, -1.0f);
-        gl.glVertex3f(1.0f, -1.0f, 1.0f);
-//œciana górna
-/*
-         gl.glColor3f(1.0f, 0.0f, 1.0f);
-         gl.glVertex3f(-1.0f, 1.0f, -1.0f);
-         gl.glVertex3f(-1.0f, 1.0f, 1.0f);
-         gl.glVertex3f(1.0f, 1.0f, 1.0f);
-         gl.glVertex3f(1.0f, 1.0f, -1.0f);
-         */
+float x, y, kat;
+
+        gl.glBegin(GL.GL_TRIANGLE_FAN);
+        gl.glColor3f(1.0f, 0.0f, 0.0f);
+        gl.glVertex3f(0.0f, 0.0f, -1.0f); //?rodek
+        //for (kat = (float) (2.0f * Math.PI); kat > 0.0; kat -= (Math.PI / 32.0f)) {
+        for (kat = 0.0f; kat < (2.0f * Math.PI); kat += (Math.PI / 32.0f)) {
+            x = 1.5f * (float) Math.sin(kat);
+            y = 1.5f * (float) Math.cos(kat);
+            gl.glVertex3f(x, y, -1.0f); //kolejne punkty
+        }
         gl.glEnd();
-        gl.glBegin(GL.GL_TRIANGLES);
-        //bia³a
-        gl.glColor3f(1.0f, 1.0f, 1.0f);
-        gl.glVertex3f(-1.0f, -1.0f, 1.0f);
-        gl.glVertex3f(1.0f, -1.0f, 1.0f);
-        gl.glVertex3f(0.0f, 1.0f, 0.0f);
-        //b³êkitna
-        gl.glColor3f(0.0f, 1.0f, 3.0f);
-        gl.glVertex3f(-1.0f, -1.0f, -1.0f);
-        gl.glVertex3f(0.0f, 1.0f, 0.0f);
-        gl.glVertex3f(1.0f, -1.0f, -1.0f);
-        //zielona
-        gl.glColor3f(0.0f, 1.0f, 0.0f);
-        gl.glVertex3f(0.0f, 1.0f, 0.0f);
-        gl.glVertex3f(1.0f, -1.0f, 1.0f);
-        gl.glVertex3f(1.0f, -1.0f, -1.0f);
-        //¿ó³ta
+
+        gl.glBegin(GL.GL_TRIANGLE_FAN);
+        gl.glColor3f(0.5f, 1.0f, 0.0f);
+        gl.glVertex3f(0.0f, 0.0f, 1.0f); //?rodek
+        for (kat = (float) (2.0f * Math.PI); kat > 0.0; kat -= (Math.PI / 32.0f)) {
+        //for (kat = 0.0f; kat < (2.0f * Math.PI); kat += (Math.PI / 32.0f)) {
+            x = 1.5f * (float) Math.sin(kat);
+            y = 1.5f * (float) Math.cos(kat);
+            gl.glVertex3f(x, y, 1.0f); //kolejne punkty
+        }
+        gl.glEnd();
+        
+        gl.glBegin(GL.GL_QUAD_STRIP);
         gl.glColor3f(1.0f, 1.0f, 0.0f);
-        gl.glVertex3f(-1.0f, -1.0f, -1.0f);
-        gl.glVertex3f(-1.0f, -1.0f, 1.0f);
-        gl.glVertex3f(0.0f, 1.0f, 0.0f);
+        
+        //?rodek
+        //for (kat = 0.0f; kat < (2.0f * Math.PI); kat += (Math.PI / 32.0f)) {
+        for (kat = 0.0f; kat < (2.0f * Math.PI); kat += (Math.PI / 32.0f)) {
+            x = 1.5f * (float) Math.sin(kat);
+            y = 1.5f * (float) Math.cos(kat);
+            gl.glVertex3f(x, y, -1.0f);
+            gl.glVertex3f(x, y, 1.0f);//kolejne punkty
+        }
         gl.glEnd();
+        
+        
         //Tu piszemy kod tworz¹cy obiekty 3D
         // Flush all drawing operations to the graphics card
         gl.glFlush();
