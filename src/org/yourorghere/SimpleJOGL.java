@@ -116,7 +116,7 @@ public class SimpleJOGL implements GLEventListener {
 float x, y, kat;
 
         gl.glBegin(GL.GL_TRIANGLE_FAN);
-        gl.glColor3f(1.0f, 0.0f, 0.0f);
+        gl.glColor3f(0.0f, 0.5f, 1.0f);
         gl.glVertex3f(0.0f, 0.0f, -1.0f); //?rodek
         //for (kat = (float) (2.0f * Math.PI); kat > 0.0; kat -= (Math.PI / 32.0f)) {
         for (kat = 0.0f; kat < (2.0f * Math.PI); kat += (Math.PI / 32.0f)) {
@@ -127,7 +127,7 @@ float x, y, kat;
         gl.glEnd();
 
         gl.glBegin(GL.GL_TRIANGLE_FAN);
-        gl.glColor3f(0.5f, 1.0f, 0.0f);
+        gl.glColor3f(0.5f, 0.0f, 1.0f);
         gl.glVertex3f(0.0f, 0.0f, 1.0f); //?rodek
         for (kat = (float) (2.0f * Math.PI); kat > 0.0; kat -= (Math.PI / 32.0f)) {
         //for (kat = 0.0f; kat < (2.0f * Math.PI); kat += (Math.PI / 32.0f)) {
@@ -138,7 +138,7 @@ float x, y, kat;
         gl.glEnd();
         
         gl.glBegin(GL.GL_QUAD_STRIP);
-        gl.glColor3f(1.0f, 1.0f, 0.0f);
+        gl.glColor3f(1.0f, 1.0f, 1.0f);
         
         //?rodek
         //for (kat = 0.0f; kat < (2.0f * Math.PI); kat += (Math.PI / 32.0f)) {
